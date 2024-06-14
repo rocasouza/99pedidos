@@ -20,6 +20,7 @@ type
     Label2: TLabel;
     Layout1: TLayout;
     SpeedButton1: TSpeedButton;
+    StyleBook1: TStyleBook;
   private
     { Private declarations }
   public
