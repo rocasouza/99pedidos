@@ -1,2 +1,0 @@
-.\assets\internal\default.txvpck
-.\assets\internal\default.txaPackage
