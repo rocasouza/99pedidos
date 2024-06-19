@@ -44,7 +44,6 @@ type
     procedure BTProximo1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BTAcessarClick(Sender: TObject);
-    procedure BTCriarClick(Sender: TObject);
   private
     procedure AbrirAba(index: integer);
     { Private declarations }
@@ -68,14 +67,6 @@ begin
 end;
 
 procedure TFrmInicial.BTAcessarClick(Sender: TObject);
-begin
-  if not Assigned(FrmLogin) then
-     Application.CreateForm(TFrmLogin, FrmLogin);
-
-  FrmLogin.Show;
-end;
-
-procedure TFrmInicial.BTCriarClick(Sender: TObject);
 begin
   if not Assigned(FrmLogin) then
      Application.CreateForm(TFrmLogin, FrmLogin);

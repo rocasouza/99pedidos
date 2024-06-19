@@ -1,4 +1,4 @@
-unit UnitInicial;
+unit UnitLogin;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
 
 type
-  TFrmInicial = class(TForm)
+  TFrmLogin = class(TForm)
   private
     { Private declarations }
   public
@@ -15,7 +15,7 @@ type
   end;
 
 var
-  FrmInicial: TFrmInicial;
+  FrmLogin: TFrmLogin;
 
 implementation
 

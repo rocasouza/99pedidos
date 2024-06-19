@@ -21,6 +21,26 @@ type
     Layout1: TLayout;
     SpeedButton1: TSpeedButton;
     StyleBook1: TStyleBook;
+    Layout2: TLayout;
+    Image2: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    Layout3: TLayout;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    Layout4: TLayout;
+    Image3: TImage;
+    Label5: TLabel;
+    Label6: TLabel;
+    Layout5: TLayout;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    Layout6: TLayout;
+    Image4: TImage;
+    Label7: TLabel;
+    Layout7: TLayout;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
   private
     { Private declarations }
   public

@@ -10,7 +10,6 @@ object FrmInicial: TFrmInicial
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object TabControl: TTabControl
     Align = Client
@@ -20,7 +19,7 @@ object FrmInicial: TFrmInicial
     Size.PlatformDefault = False
     StyleLookup = 'TabControl'
     TabHeight = 49.000000000000000000
-    TabIndex = 3
+    TabIndex = 2
     TabOrder = 0
     TabPosition = None
     Sizes = (
@@ -261,7 +260,6 @@ object FrmInicial: TFrmInicial
           Text = 'Pr'#243'ximo'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTProximo1Click
         end
       end
     end
@@ -574,7 +572,6 @@ object FrmInicial: TFrmInicial
           Text = 'Voltar'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTProximo1Click
         end
         object BTProximo2: TSpeedButton
           Tag = 2
@@ -589,7 +586,6 @@ object FrmInicial: TFrmInicial
           Text = 'Pr'#243'ximo'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTProximo1Click
         end
       end
     end
@@ -597,7 +593,7 @@ object FrmInicial: TFrmInicial
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -795,7 +791,6 @@ object FrmInicial: TFrmInicial
           Text = 'Voltar'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTProximo1Click
         end
         object BTProximo3: TSpeedButton
           Tag = 3
@@ -810,7 +805,6 @@ object FrmInicial: TFrmInicial
           Text = 'Pr'#243'ximo'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTProximo1Click
         end
       end
     end
@@ -818,7 +812,7 @@ object FrmInicial: TFrmInicial
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -1087,7 +1081,6 @@ object FrmInicial: TFrmInicial
           Text = 'ACESSAR MINHA CONTA'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTAcessarClick
         end
         object BTCriar: TSpeedButton
           Align = Bottom
@@ -1105,7 +1098,6 @@ object FrmInicial: TFrmInicial
           Text = 'CRIAR MINHA CONTA'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = xFF4162FF
-          OnClick = BTCriarClick
         end
       end
     end

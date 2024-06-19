@@ -42,9 +42,6 @@ type
     BTAcessar: TSpeedButton;
     BTCriar: TSpeedButton;
     procedure BTProximo1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure BTAcessarClick(Sender: TObject);
-    procedure BTCriarClick(Sender: TObject);
   private
     procedure AbrirAba(index: integer);
     { Private declarations }
@@ -57,9 +54,6 @@ var
 
 implementation
 
-uses
-  UnitLogin;
-
 {$R *.fmx}
 
 procedure TFrmInicial.AbrirAba(index : integer);
@@ -67,30 +61,9 @@ begin
   TabControl.GotoVisibleTab(index);
 end;
 
-procedure TFrmInicial.BTAcessarClick(Sender: TObject);
-begin
-  if not Assigned(FrmLogin) then
-     Application.CreateForm(TFrmLogin, FrmLogin);
-
-  FrmLogin.Show;
-end;
-
-procedure TFrmInicial.BTCriarClick(Sender: TObject);
-begin
-  if not Assigned(FrmLogin) then
-     Application.CreateForm(TFrmLogin, FrmLogin);
-
-  FrmLogin.Show;
-end;
-
 procedure TFrmInicial.BTProximo1Click(Sender: TObject);
 begin
   AbrirAba(TSpeedButton(Sender).Tag);
-end;
-
-procedure TFrmInicial.FormCreate(Sender: TObject);
-begin
-  TabControl.ActiveTab := TabItem1;
 end;
 
 end.

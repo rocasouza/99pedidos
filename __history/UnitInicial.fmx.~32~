@@ -1105,7 +1105,6 @@ object FrmInicial: TFrmInicial
           Text = 'CRIAR MINHA CONTA'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = xFF4162FF
-          OnClick = BTCriarClick
         end
       end
     end
