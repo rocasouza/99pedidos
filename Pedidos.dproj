@@ -193,7 +193,7 @@
             <Form>FrmInicial</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="UnitLogin.pas">
+        <DCCReference Include="pages\UnitLogin.pas">
             <Form>FrmLogin</Form>
             <FormType>fmx</FormType>
         </DCCReference>
