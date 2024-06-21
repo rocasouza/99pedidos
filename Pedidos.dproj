@@ -189,12 +189,16 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="UnitInicial.pas">
-            <Form>FrmInicial</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
         <DCCReference Include="pages\UnitLogin.pas">
             <Form>FrmLogin</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="pages\UnitPrincipal.pas">
+            <Form>FrmPrincipal</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="pages\UnitInicial.pas">
+            <Form>FrmInicial</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>

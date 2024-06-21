@@ -3,8 +3,9 @@ program Pedidos;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  UnitInicial in 'UnitInicial.pas' {FrmInicial},
-  UnitLogin in 'pages\UnitLogin.pas' {FrmLogin};
+  UnitLogin in 'pages\UnitLogin.pas' {FrmLogin},
+  UnitPrincipal in 'pages\UnitPrincipal.pas' {FrmPrincipal},
+  UnitInicial in 'pages\UnitInicial.pas' {FrmInicial};
 
 {$R *.res}
 

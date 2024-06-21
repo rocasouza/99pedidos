@@ -10,18 +10,18 @@ uses
 type
   TFrmLogin = class(TForm)
     TabControl: TTabControl;
-    TabItem1: TTabItem;
-    TabItem2: TTabItem;
+    TabLogin: TTabItem;
+    TabCriarConta: TTabItem;
     Rectangle1: TRectangle;
     Layout6: TLayout;
     Image4: TImage;
     Label7: TLabel;
     Layout1: TLayout;
-    Label1: TLabel;
+    lblCriar: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    Edit1: TEdit;
-    Edit2: TEdit;
+    EditEmail: TEdit;
+    EditSenha: TEdit;
     StyleBook1: TStyleBook;
     BTLogin: TSpeedButton;
     Rectangle2: TRectangle;
@@ -31,10 +31,15 @@ type
     Layout3: TLayout;
     Label5: TLabel;
     Label6: TLabel;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    SpeedButton1: TSpeedButton;
-    Label8: TLabel;
+    EditContaNome: TEdit;
+    EditContaSenha: TEdit;
+    BTCriarConta: TSpeedButton;
+    lblLogin: TLabel;
+    EditContaEmail: TEdit;
+    Label9: TLabel;
+    procedure lblCriarClick(Sender: TObject);
+    procedure lblLoginClick(Sender: TObject);
+    procedure BTLoginClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,5 +52,25 @@ var
 implementation
 
 {$R *.fmx}
+
+uses UnitPrincipal;
+
+procedure TFrmLogin.BTLoginClick(Sender: TObject);
+begin
+  if not Assigned(FrmPrincipal) then
+     Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+
+  FrmPrincipal.Show;
+end;
+
+procedure TFrmLogin.lblCriarClick(Sender: TObject);
+begin
+  TabControl.GotoVisibleTab(1);
+end;
+
+procedure TFrmLogin.lblLoginClick(Sender: TObject);
+begin
+  TabControl.GotoVisibleTab(0);
+end;
 
 end.

@@ -10,6 +10,11 @@
     <Transaction>2024/06/19 00:50:07.000.174,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/06/19 00:53:15.000.304,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas=F:\delphi\99 Coders\Mobile\99pedidos\UnitLogin.pas</Transaction>
     <Transaction>2024/06/19 00:53:15.000.304,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.fmx=F:\delphi\99 Coders\Mobile\99pedidos\UnitLogin.fmx</Transaction>
-    <Transaction>2024/06/19 23:43:11.244,=F:\delphi\99 Coders\Mobile\99pedidos\pages\UnitLogin.pas</Transaction>
+    <Transaction>2024/06/19 23:43:11.000.244,=F:\delphi\99 Coders\Mobile\99pedidos\pages\UnitLogin.pas</Transaction>
+    <Transaction>2024/06/20 23:33:52.603,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
+    <Transaction>2024/06/20 23:35:51.394,F:\delphi\99 Coders\Mobile\99pedidos\pages\UnitPrincipal.fmx=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.fmx</Transaction>
+    <Transaction>2024/06/20 23:35:51.394,F:\delphi\99 Coders\Mobile\99pedidos\pages\UnitPrincipal.pas=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
+    <Transaction>2024/06/20 23:36:35.980,F:\delphi\99 Coders\Mobile\99pedidos\UnitInicial.pas=</Transaction>
+    <Transaction>2024/06/20 23:37:10.182,=F:\delphi\99 Coders\Mobile\99pedidos\pages\UnitInicial.pas</Transaction>
   </Transactions>
 </BorlandProject>

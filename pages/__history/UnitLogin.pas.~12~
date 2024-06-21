@@ -1,0 +1,65 @@
+unit UnitLogin;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl,
+  FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
+
+type
+  TFrmLogin = class(TForm)
+    TabControl: TTabControl;
+    TabLogin: TTabItem;
+    TabCriarConta: TTabItem;
+    Rectangle1: TRectangle;
+    Layout6: TLayout;
+    Image4: TImage;
+    Label7: TLabel;
+    Layout1: TLayout;
+    lblCriar: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    EditEmail: TEdit;
+    EditSenha: TEdit;
+    StyleBook1: TStyleBook;
+    BTLogin: TSpeedButton;
+    Rectangle2: TRectangle;
+    Layout2: TLayout;
+    Image1: TImage;
+    Label4: TLabel;
+    Layout3: TLayout;
+    Label5: TLabel;
+    Label6: TLabel;
+    EditContaNome: TEdit;
+    EditContaSenha: TEdit;
+    BTCriarConta: TSpeedButton;
+    lblLogin: TLabel;
+    EditContaEmail: TEdit;
+    Label9: TLabel;
+    procedure lblCriarClick(Sender: TObject);
+    procedure lblLoginClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+{$R *.fmx}
+
+procedure TFrmLogin.lblCriarClick(Sender: TObject);
+begin
+  TabControl.GotoVisibleTab(1);
+end;
+
+procedure TFrmLogin.lblLoginClick(Sender: TObject);
+begin
+  TabControl.GotoVisibleTab(0);
+end;
+
+end.

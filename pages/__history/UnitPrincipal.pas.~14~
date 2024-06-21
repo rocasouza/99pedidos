@@ -1,0 +1,73 @@
+unit UnitPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.TabControl, FMX.Controls.Presentation, FMX.StdCtrls;
+
+type
+  TFrmPrincipal = class(TForm)
+    rectAbas: TRectangle;
+    imgAbaDashboard: TImage;
+    imgAbaPedido: TImage;
+    imgAbaNotificacao: TImage;
+    imgAbaCliente: TImage;
+    imgAbaMais: TImage;
+    TabControl: TTabControl;
+    TabDashboard: TTabItem;
+    TabPedido: TTabItem;
+    TabCliente: TTabItem;
+    TabNotificacao: TTabItem;
+    TabMais: TTabItem;
+    CircleNotificacao: TCircle;
+    RectToobalDashboard: TRectangle;
+    Label1: TLabel;
+    Rectangle1: TRectangle;
+    Pedidos: TLabel;
+    Rectangle2: TRectangle;
+    Label2: TLabel;
+    Rectangle3: TRectangle;
+    Label3: TLabel;
+    Rectangle4: TRectangle;
+    Label4: TLabel;
+    procedure imgAbaDashboardClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    procedure AbrirAba(img: TImage);
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.fmx}
+
+procedure TFrmPrincipal.AbrirAba(img : TImage);
+begin
+  imgAbaDashboard.Opacity   := 0.5;
+  imgAbaPedido.Opacity      := 0.5;
+  imgAbaCliente.Opacity     := 0.5;
+  imgAbaNotificacao.Opacity := 0.5;
+  imgAbaMais.Opacity        := 0.5;
+
+  img.Opacity := 1;
+  TabControl.GotoVisibleTab(img.Tag);
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  AbrirAba(imgAbaDashboard);
+end;
+
+procedure TFrmPrincipal.imgAbaDashboardClick(Sender: TObject);
+begin
+  AbrirAba(TImage(Sender));
+end;
+
+end.
