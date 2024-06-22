@@ -131,9 +131,9 @@ begin
       // Número do pedido...
       txt := TListItemText(Objects.FindDrawable('txtPedido'));
       if pedido_oficial <> '' then
-         txt.Text := 'Pedido #' + pedido_oficial
+         txt.Text := '#' + pedido_oficial
       else
-         txt.Text := 'Orçamento #' + pedido_local;
+         txt.Text := '#' + pedido_local;
 
       // Cliente...
       txt := TListItemText(Objects.FindDrawable('txtCliente'));

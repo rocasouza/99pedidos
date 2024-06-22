@@ -1,0 +1,8 @@
+object DmGlobal: TDmGlobal
+  Height = 480
+  Width = 349
+  object Conn: TFDConnection
+    Left = 56
+    Top = 32
+  end
+end

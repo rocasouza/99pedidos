@@ -671,7 +671,7 @@ object FrmPrincipal: TFrmPrincipal
     Size.Width = 350.000000000000000000
     Size.Height = 461.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     TabPosition = None
     Sizes = (
@@ -689,7 +689,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -2175,7 +2175,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -4380,7 +4380,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Produtos'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image6: TImage
             MultiResBitmap.Height = 128
@@ -4587,7 +4587,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Meu Perfil'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image8: TImage
             MultiResBitmap.Height = 128
@@ -4852,7 +4852,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Alterar Senha'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image10: TImage
             MultiResBitmap.Height = 128
@@ -5012,7 +5012,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Sincronizar Dados'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image12: TImage
             MultiResBitmap.Height = 128
@@ -5221,7 +5221,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Desconectar'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image14: TImage
             MultiResBitmap.Height = 128

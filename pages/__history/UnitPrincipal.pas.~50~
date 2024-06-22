@@ -131,9 +131,9 @@ begin
       // Número do pedido...
       txt := TListItemText(Objects.FindDrawable('txtPedido'));
       if pedido_oficial <> '' then
-         txt.Text := 'Pedido #' + pedido_oficial
+         txt.Text := '#' + pedido_oficial
       else
-         txt.Text := 'Orçamento #' + pedido_local;
+         txt.Text := '#' + pedido_local;
 
       // Cliente...
       txt := TListItemText(Objects.FindDrawable('txtCliente'));
@@ -158,7 +158,7 @@ begin
       // Ícone sincronizar...
       if id_sicronizar = 'S' then
       begin
-        img := TListItemImage(Objects.FindDrawable('imgSincronizar'));
+        img := TListItemImage(Objects.FindDrawable('imgSincronizacao'));
         img.Bitmap := imgIconeSincronizar.Bitmap;
       end;
     end;
@@ -174,7 +174,7 @@ begin
   AddPedidoListView('321', '', '99 Coders', '22/06/2024', 'S', 325.12);
   AddPedidoListView('3231', '', 'Brazil Company Ltda.', '22/06/2024', 'S', 1125.50);
   AddPedidoListView('1341', '', 'Via Sat', '22/06/2024', 'S', 435.00);
-  AddPedidoListView('671', '', 'Asta Brazil', '10/06/2024', 'N', 25.38);
+  AddPedidoListView('671', '', 'Asta Brazil', '10/06/2024', 'S', 25.38);
 end;
 
 procedure TFrmPrincipal.imgAbaDashboardClick(Sender: TObject);

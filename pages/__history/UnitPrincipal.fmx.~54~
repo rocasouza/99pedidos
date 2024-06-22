@@ -671,7 +671,7 @@ object FrmPrincipal: TFrmPrincipal
     Size.Width = 350.000000000000000000
     Size.Height = 461.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     TabPosition = None
     Sizes = (
@@ -689,7 +689,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -2175,7 +2175,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -3939,7 +3939,6 @@ object FrmPrincipal: TFrmPrincipal
           item
             AppearanceObjectName = 'txtPedido'
             AppearanceClassName = 'TTextObjectAppearance'
-            Appearance.Font.StyleExt = {00060000000000000004000000}
             Appearance.TextAlign = Leading
             Appearance.TextColor = xFF393939
             Appearance.Width = 230.000000000000000000
@@ -3950,7 +3949,6 @@ object FrmPrincipal: TFrmPrincipal
           item
             AppearanceObjectName = 'txtCliente'
             AppearanceClassName = 'TTextObjectAppearance'
-            Appearance.Font.StyleExt = {00060000000000000004000000}
             Appearance.TextAlign = Leading
             Appearance.TextColor = xFFA3A3A3
             Appearance.Width = 262.000000000000000000
@@ -3961,7 +3959,6 @@ object FrmPrincipal: TFrmPrincipal
           item
             AppearanceObjectName = 'txtData'
             AppearanceClassName = 'TTextObjectAppearance'
-            Appearance.Font.StyleExt = {00060000000000000004000000}
             Appearance.TextAlign = Leading
             Appearance.TextColor = xFFA3A3A3
             Appearance.Width = 262.000000000000000000
@@ -3972,7 +3969,6 @@ object FrmPrincipal: TFrmPrincipal
           item
             AppearanceObjectName = 'txtValor'
             AppearanceClassName = 'TTextObjectAppearance'
-            Appearance.Font.StyleExt = {00060000000000000004000000}
             Appearance.TextAlign = Trailing
             Appearance.TextColor = xFFA3A3A3
             Appearance.Width = 90.000000000000000000
@@ -3984,24 +3980,24 @@ object FrmPrincipal: TFrmPrincipal
           item
             AppearanceObjectName = 'imgCliente'
             AppearanceClassName = 'TImageObjectAppearance'
-            Appearance.Width = 20.000000000000000000
-            Appearance.Height = 20.000000000000000000
+            Appearance.Width = 22.000000000000000000
+            Appearance.Height = 22.000000000000000000
             Appearance.PlaceOffset.X = 11.000000000000000000
-            Appearance.PlaceOffset.Y = 34.000000000000000000
+            Appearance.PlaceOffset.Y = 32.000000000000000000
           end
           item
             AppearanceObjectName = 'imgData'
             AppearanceClassName = 'TImageObjectAppearance'
-            Appearance.Width = 20.000000000000000000
-            Appearance.Height = 20.000000000000000000
+            Appearance.Width = 22.000000000000000000
+            Appearance.Height = 22.000000000000000000
             Appearance.PlaceOffset.X = 11.000000000000000000
-            Appearance.PlaceOffset.Y = 58.000000000000000000
+            Appearance.PlaceOffset.Y = 56.000000000000000000
           end
           item
             AppearanceObjectName = 'imgSincronizar'
             AppearanceClassName = 'TImageObjectAppearance'
-            Appearance.Width = 30.000000000000000000
-            Appearance.Height = 30.000000000000000000
+            Appearance.Width = 35.000000000000000000
+            Appearance.Height = 35.000000000000000000
             Appearance.Align = Trailing
             Appearance.PlaceOffset.X = -8.000000000000000000
             Appearance.PlaceOffset.Y = 40.000000000000000000
@@ -4380,7 +4376,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Produtos'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image6: TImage
             MultiResBitmap.Height = 128
@@ -4587,7 +4583,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Meu Perfil'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image8: TImage
             MultiResBitmap.Height = 128
@@ -4852,7 +4848,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Alterar Senha'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image10: TImage
             MultiResBitmap.Height = 128
@@ -5012,7 +5008,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Sincronizar Dados'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image12: TImage
             MultiResBitmap.Height = 128
@@ -5221,7 +5217,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.StyleExt = {00060000000000000004000000}
             TextSettings.FontColor = xFF4162FF
             Text = 'Desconectar'
-            TabOrder = 40
+            TabOrder = 41
           end
           object Image14: TImage
             MultiResBitmap.Height = 128
@@ -5370,7 +5366,6 @@ object FrmPrincipal: TFrmPrincipal
       end>
     Position.X = 91.000000000000000000
     Position.Y = 312.000000000000000000
-    Visible = False
   end
   object imgIconeData: TImage
     MultiResBitmap.Height = 64
@@ -5444,7 +5439,6 @@ object FrmPrincipal: TFrmPrincipal
       end>
     Position.X = 149.000000000000000000
     Position.Y = 312.000000000000000000
-    Visible = False
   end
   object imgIconeSincronizar: TImage
     MultiResBitmap.Height = 64
@@ -5523,6 +5517,5 @@ object FrmPrincipal: TFrmPrincipal
       end>
     Position.X = 210.000000000000000000
     Position.Y = 312.000000000000000000
-    Visible = False
   end
 end
