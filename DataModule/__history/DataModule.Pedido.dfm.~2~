@@ -1,0 +1,4 @@
+object dmPedido: TdmPedido
+  Height = 480
+  Width = 274
+end

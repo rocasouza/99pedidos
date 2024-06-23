@@ -206,6 +206,16 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="DataModule\DataModule.Pedido.pas">
+            <Form>DmPedido</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="DataModule\DataModule.Cliente.pas">
+            <Form>DmCliente</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>
         <None Include="ModelSupport_Pedidos\default.txvpck"/>
         <None Include="ModelSupport_Pedidos\UnitPrincipal\default.txvpck"/>
@@ -736,6 +746,12 @@
                 <DeployFile LocalName="Win64\Debug\Pedidos.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>Pedidos.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\Pedidos.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>Pedidos.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

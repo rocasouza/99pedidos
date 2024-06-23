@@ -93,8 +93,6 @@ type
     procedure lvPedidoPaint(Sender: TObject; Canvas: TCanvas;
       const ARect: TRectF);
     procedure BTBuscaClienteClick(Sender: TObject);
-    procedure lvClientePaint(Sender: TObject; Canvas: TCanvas;
-      const ARect: TRectF);
   private
     procedure AbrirAba(img: TImage);
     procedure AddPedidoListView(pedido_local, pedido_oficial, cliente,
@@ -451,15 +449,6 @@ end;
 procedure TFrmPrincipal.BTBuscaClienteClick(Sender: TObject);
 begin
   ListarClientes(1, EditBuscaCliente.Text, True);
-end;
-
-procedure TFrmPrincipal.lvClientePaint(Sender: TObject; Canvas: TCanvas;
-  const ARect: TRectF);
-begin
-  // Verifica se a rolagem atingiu o limite para uma nova carga.
-  if (lvCliente.Items.Count >= QTD_REG_PAGINA_PEDIDO) and (lvCliente.Tag >= 0) then
-     if lvCliente.GetItemRect(lvCliente.Items.Count - 5).Bottom <= lvCliente.Height then
-        ListarClientes(lvCliente.Tag + 1, EditBuscaCliente.Text, False);
 end;
 
 {$ENDREGION}

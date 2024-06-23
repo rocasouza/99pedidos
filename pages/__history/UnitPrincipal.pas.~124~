@@ -93,8 +93,6 @@ type
     procedure lvPedidoPaint(Sender: TObject; Canvas: TCanvas;
       const ARect: TRectF);
     procedure BTBuscaClienteClick(Sender: TObject);
-    procedure lvClientePaint(Sender: TObject; Canvas: TCanvas;
-      const ARect: TRectF);
   private
     procedure AbrirAba(img: TImage);
     procedure AddPedidoListView(pedido_local, pedido_oficial, cliente,
@@ -115,8 +113,7 @@ var
   FrmPrincipal: TFrmPrincipal;
 
 Const
-  QTD_REG_PAGINA_PEDIDO  = 15;
-  QTD_REG_PAGINA_CLIENTE = 15;
+  QTD_REG_PAGINA_PEDIDO = 15;
 
 implementation
 
@@ -246,6 +243,7 @@ begin
       Exit;
     end;
   end;
+
 end;
 
 // Requisição para os dados dos pedidos.
@@ -370,10 +368,6 @@ end;
 // Terminate da Thread dos Clientes.
 procedure TFrmPrincipal.ThreadClientesTerminate(Sender: TObject);
 begin
-  // Não carregar mais dados.
-  if DmCliente.qryConsCliente.RecordCount < QTD_REG_PAGINA_CLIENTE then
-     lvCliente.Tag := -1;
-
   with DmCliente.qryConsCliente do
   begin
     while not Eof do
@@ -389,22 +383,6 @@ begin
                          FieldByName('fone').AsString,
                          FieldByName('ind_sincronizar').AsString);
       Next;
-    end;
-  end;
-
-  // Finaliza update da ListView.
-  lvCliente.EndUpdate;
-
-  // Marcar que o processo terminou.
-  lvCliente.TagString := '';
-
-  // Exibe mensagem caso haja algum erro na thread.
-  if Sender is TThread then
-  begin
-    if Assigned(TThread(Sender).FatalException) then
-    begin
-      ShowMessage(Exception(TThread(Sender).FatalException).Message);
-      Exit;
     end;
   end;
 end;
@@ -451,15 +429,6 @@ end;
 procedure TFrmPrincipal.BTBuscaClienteClick(Sender: TObject);
 begin
   ListarClientes(1, EditBuscaCliente.Text, True);
-end;
-
-procedure TFrmPrincipal.lvClientePaint(Sender: TObject; Canvas: TCanvas;
-  const ARect: TRectF);
-begin
-  // Verifica se a rolagem atingiu o limite para uma nova carga.
-  if (lvCliente.Items.Count >= QTD_REG_PAGINA_PEDIDO) and (lvCliente.Tag >= 0) then
-     if lvCliente.GetItemRect(lvCliente.Items.Count - 5).Bottom <= lvCliente.Height then
-        ListarClientes(lvCliente.Tag + 1, EditBuscaCliente.Text, False);
 end;
 
 {$ENDREGION}

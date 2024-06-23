@@ -93,8 +93,6 @@ type
     procedure lvPedidoPaint(Sender: TObject; Canvas: TCanvas;
       const ARect: TRectF);
     procedure BTBuscaClienteClick(Sender: TObject);
-    procedure lvClientePaint(Sender: TObject; Canvas: TCanvas;
-      const ARect: TRectF);
   private
     procedure AbrirAba(img: TImage);
     procedure AddPedidoListView(pedido_local, pedido_oficial, cliente,
@@ -105,7 +103,6 @@ type
       complemento, bairro, cidade, uf, fone, ind_sincronizar: string);
     procedure ListarClientes(pagina: integer; busca: string;
       ind_clear: boolean);
-    procedure ThreadClientesTerminate(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -115,8 +112,7 @@ var
   FrmPrincipal: TFrmPrincipal;
 
 Const
-  QTD_REG_PAGINA_PEDIDO  = 15;
-  QTD_REG_PAGINA_CLIENTE = 15;
+  QTD_REG_PAGINA_PEDIDO = 15;
 
 implementation
 
@@ -209,7 +205,6 @@ begin
   end;
 end;
 
-// Terminate da Thread dos Pedidos.
 procedure TFrmPrincipal.ThreadPedidosTerminate(Sender: TObject);
 begin
   // Não carregar mais dados.
@@ -246,6 +241,7 @@ begin
       Exit;
     end;
   end;
+
 end;
 
 // Requisição para os dados dos pedidos.
@@ -305,7 +301,7 @@ end;
 {$ENDREGION}
 
 {$REGION 'Aba Clientes'}
-// Adiciona Pedidos na lvCliente.
+// Adiciona Pedidos na lvPedido.
 procedure TFrmPrincipal.AddClienteListView(cod_cliente_local, nome, endereco, numero, complemento, bairro,
                                            cidade, uf, fone, ind_sincronizar: string);
 var
@@ -367,12 +363,12 @@ begin
   end;
 end;
 
-// Terminate da Thread dos Clientes.
-procedure TFrmPrincipal.ThreadClientesTerminate(Sender: TObject);
+// Requisição para os dados dos pedidos.
+procedure TFrmPrincipal.ListarClientes(pagina: integer; busca: string; ind_clear: boolean);
+var
+ t : TThread;
 begin
-  // Não carregar mais dados.
-  if DmCliente.qryConsCliente.RecordCount < QTD_REG_PAGINA_CLIENTE then
-     lvCliente.Tag := -1;
+  DmCliente.ListarClientes(pagina, busca);
 
   with DmCliente.qryConsCliente do
   begin
@@ -392,74 +388,45 @@ begin
     end;
   end;
 
-  // Finaliza update da ListView.
-  lvCliente.EndUpdate;
 
-  // Marcar que o processo terminou.
-  lvCliente.TagString := '';
-
-  // Exibe mensagem caso haja algum erro na thread.
-  if Sender is TThread then
-  begin
-    if Assigned(TThread(Sender).FatalException) then
-    begin
-      ShowMessage(Exception(TThread(Sender).FatalException).Message);
-      Exit;
-    end;
-  end;
-end;
-
-// Requisição para os dados dos clientes.
-procedure TFrmPrincipal.ListarClientes(pagina: integer; busca: string; ind_clear: boolean);
-var
- t : TThread;
-begin
-  // Evitar processamento concorrente.
-  if lvCliente.TagString = 'S' then
-     Exit;
-
-  // Em processamento.
-  lvCliente.TagString := 'S';
-
-  // Começa update da ListView.
-  lvCliente.BeginUpdate;
-
-  // Limpa a ListView...
-  if ind_clear then
-  begin
-    pagina := 1;
-    lvCliente.ScrollTo(0);
-    lvCliente.Items.Clear;
-  end;
-
-  { Tag: contém a página atual solicitada ao servidor.
-    >= 1 : faz o request para buscar mais dados
-    -1   : indica que não tem mais dados
-  }
-  // Salva a página atual a ser exibida.
-  lvCliente.Tag := pagina;
-
-  // Requisição por mais dados.
-  t := TThread.CreateAnonymousThread(procedure
-  begin
-    DmCliente.ListarClientes(pagina, busca);
-  end);
-  t.OnTerminate := ThreadClientesTerminate;
-  t.Start;
+//  // Evitar processamento concorrente.
+//  if lvPedido.TagString = 'S' then
+//     Exit;
+//
+//  // Em processamento.
+//  lvPedido.TagString := 'S';
+//
+//  // Começa update da ListView.
+//  lvPedido.BeginUpdate;
+//
+//  // Limpa a ListView...
+//  if ind_clear then
+//  begin
+//    pagina := 1;
+//    lvPedido.ScrollTo(0);
+//    lvPedido.Items.Clear;
+//  end;
+//
+//  { Tag: contém a página atual solicitada ao servidor.
+//    >= 1 : faz o request para buscar mais dados
+//    -1   : indica que não tem mais dados
+//  }
+//  // Salva a página atual a ser exibida.
+//  lvPedido.Tag := pagina;
+//
+//  // Requisição por mais dados.
+//  t := TThread.CreateAnonymousThread(procedure
+//  begin
+////    DmPedido.ListarClientes(pagina, busca);
+//
+//  end);
+//  t.OnTerminate := ThreadPedidosTerminate;
+//  t.Start;
 end;
 
 procedure TFrmPrincipal.BTBuscaClienteClick(Sender: TObject);
 begin
-  ListarClientes(1, EditBuscaCliente.Text, True);
-end;
-
-procedure TFrmPrincipal.lvClientePaint(Sender: TObject; Canvas: TCanvas;
-  const ARect: TRectF);
-begin
-  // Verifica se a rolagem atingiu o limite para uma nova carga.
-  if (lvCliente.Items.Count >= QTD_REG_PAGINA_PEDIDO) and (lvCliente.Tag >= 0) then
-     if lvCliente.GetItemRect(lvCliente.Items.Count - 5).Bottom <= lvCliente.Height then
-        ListarClientes(lvCliente.Tag + 1, EditBuscaCliente.Text, False);
+  ListarPedidos(1, EditBuscaCliente.Text, True);
 end;
 
 {$ENDREGION}

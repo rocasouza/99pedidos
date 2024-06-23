@@ -1,0 +1,8 @@
+object dmPedido: TdmPedido
+  Height = 480
+  Width = 274
+  object qryConsPedido: TFDQuery
+    Left = 48
+    Top = 48
+  end
+end

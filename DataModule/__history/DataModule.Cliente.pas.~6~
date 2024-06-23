@@ -1,0 +1,70 @@
+unit DataModule.Cliente;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TDmCliente = class(TDataModule)
+    qryConsCliente: TFDQuery;
+  private
+    { Private declarations }
+  public
+    procedure ListarClientes(pagina: integer; busca: string);
+    { Public declarations }
+  end;
+
+var
+  DmCliente: TDmCliente;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+uses DataModule.Global;
+
+{$R *.dfm}
+
+// Lista e busca pedidos no banco de dados.
+procedure TDmCliente.ListarClientes(pagina: integer; busca: string);
+begin
+  qryConsCliente.Active := False;
+  qryConsCliente.SQL.Clear;
+  qryConsCliente.SQL.Add('Select p.*, c.nome');
+  qryConsCliente.SQL.Add('From tab_pedido p');
+  qryConsCliente.SQL.Add('Join tab_cliente c on c.cod_cliente_local = p.cod_cliente_local');
+  qryConsCliente.SQL.Add('Where p.cod_pedido_local > 0 ');
+  if busca <> '' then
+  begin
+     qryConsCliente.SQL.Add('and (c.nome like :nome or p.cod_pedido_local = :cod_pedido_local');
+     qryConsCliente.SQL.Add('or p.cod_pedido_oficial = :cod_pedido_oficial)');
+     qryConsCliente.ParamByName('nome').Value              := '%' + busca + '%';
+     try
+       qryConsCliente.ParamByName('cod_pedido_local').Value  := busca.ToInteger;
+     except
+       qryConsCliente.ParamByName('cod_pedido_local').Value  := 0;
+     end;
+     try
+       qryConsCliente.ParamByName('cod_pedido_oficial').Value := busca.ToInteger;;
+     except
+       qryConsCliente.ParamByName('cod_pedido_oficial').Value := 0;
+     end;
+  end;
+
+  qryConsCliente.SQL.Add('Order By p.cod_pedido_local Desc ');
+
+  if pagina > 0 then
+  begin
+     qryConsCliente.SQL.Add('Limit :pagina, :qtd_reg');
+     qryConsCliente.ParamByName('pagina').Value  := (pagina - 1) * QTD_REG_PAGINA;
+     qryConsCliente.ParamByName('qtd_reg').Value := QTD_REG_PAGINA;
+  end;
+
+  qryConsCliente.Active := True;
+end;
+
+end.

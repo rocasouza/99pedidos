@@ -676,7 +676,7 @@ object FrmPrincipal: TFrmPrincipal
     Size.Width = 350.000000000000000000
     Size.Height = 461.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 4
+    TabIndex = 2
     TabOrder = 1
     TabPosition = None
     Sizes = (
@@ -4023,7 +4023,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -4162,7 +4162,7 @@ object FrmPrincipal: TFrmPrincipal
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         Stroke.Color = xFFCFCFCF
-        object EditBuscaCliente: TEdit
+        object Edit1: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           StyleLookup = 'EditStyle'
@@ -4175,7 +4175,7 @@ object FrmPrincipal: TFrmPrincipal
           TextPrompt = 'Pesquisar clientes'
           StyledSettings = [Family, Style, FontColor]
         end
-        object BTBuscaCliente: TSpeedButton
+        object BTBuscarCliente: TSpeedButton
           Align = Right
           StyledSettings = [Family, Style]
           Margins.Top = 9.000000000000000000
@@ -4190,7 +4190,6 @@ object FrmPrincipal: TFrmPrincipal
           Text = 'Buscar'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTBuscaClienteClick
         end
       end
       object lvCliente: TListView
@@ -4205,7 +4204,6 @@ object FrmPrincipal: TFrmPrincipal
         Size.Height = 351.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        OnPaint = lvClientePaint
         ItemAppearance.ItemHeight = 90
         ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
           item
@@ -4263,8 +4261,8 @@ object FrmPrincipal: TFrmPrincipal
             Appearance.Width = 30.000000000000000000
             Appearance.Height = 30.000000000000000000
             Appearance.Align = Trailing
-            Appearance.PlaceOffset.X = -11.000000000000000000
-            Appearance.PlaceOffset.Y = 38.000000000000000000
+            Appearance.PlaceOffset.X = -19.000000000000000000
+            Appearance.PlaceOffset.Y = 30.000000000000000000
           end>
         ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
           item
@@ -4339,7 +4337,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False

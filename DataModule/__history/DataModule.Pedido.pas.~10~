@@ -1,0 +1,50 @@
+unit DataModule.Pedido;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TDmPedido = class(TDataModule)
+    qryConsPedido: TFDQuery;
+  private
+    { Private declarations }
+  public
+    procedure ListarPedidos(pagina: integer; busca: string);
+    { Public declarations }
+  end;
+
+var
+  DmPedido: TDmPedido;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+uses DataModule.Global;
+
+{$R *.dfm}
+
+// Lista e busca pedidos no banco de dados.
+procedure TDmPedido.ListarPedidos(pagina: integer; busca: string);
+begin
+  qryConsPedido.Active := False;
+  qryConsPedido.SQL.Clear;
+  qryConsPedido.SQL.Add('Select p.*, c.nome');
+  qryConsPedido.SQL.Add('From tab_pedido p');
+  qryConsPedido.SQL.Add('Join tab_cliente c on c.cod_cliente_local = p.cod_cliente_local');
+  qryConsPedido.SQL.Add('Where p.cod_pedido_local > 0 ');
+  if busca <> '' then
+  begin
+     qryConsPedido.SQL.Add('and c.nome like ');
+  end;
+
+  qryConsPedido.SQL.Add('Order By p.cod_pedido_local Desc ');
+  qryConsPedido.Active := True;
+end;
+
+end.

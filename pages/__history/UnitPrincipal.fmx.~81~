@@ -676,7 +676,7 @@ object FrmPrincipal: TFrmPrincipal
     Size.Width = 350.000000000000000000
     Size.Height = 461.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 4
+    TabIndex = 2
     TabOrder = 1
     TabPosition = None
     Sizes = (
@@ -4023,7 +4023,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -4190,7 +4190,6 @@ object FrmPrincipal: TFrmPrincipal
           Text = 'Buscar'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.FontColor = claWhite
-          OnClick = BTBuscaClienteClick
         end
       end
       object lvCliente: TListView
@@ -4205,7 +4204,6 @@ object FrmPrincipal: TFrmPrincipal
         Size.Height = 351.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        OnPaint = lvClientePaint
         ItemAppearance.ItemHeight = 90
         ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
           item
@@ -4339,7 +4337,7 @@ object FrmPrincipal: TFrmPrincipal
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
