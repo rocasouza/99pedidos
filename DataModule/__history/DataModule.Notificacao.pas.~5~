@@ -1,0 +1,52 @@
+unit DataModule.Notificacao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TDmNotificacao = class(TDataModule)
+    qryConsNotificacao: TFDQuery;
+  private
+    { Private declarations }
+  public
+    procedure ListarNotificacoes(pagina: integer);
+    { Public declarations }
+  end;
+
+var
+  DmNotificacao: TDmNotificacao;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+uses DataModule.Global;
+
+{$R *.dfm}
+
+// Lista e busca clientes no banco de dados.
+procedure TDmNotificacao.ListarNotificacoes(pagina: integer);
+begin
+  qryConsNotificacao.Active := False;
+  qryConsNotificacao.SQL.Clear;
+  qryConsNotificacao.SQL.Add('Select n.*');
+  qryConsNotificacao.SQL.Add('From tab_notificacao n');
+  qryConsNotificacao.SQL.Add('Where n.cod_notificacao > 0 ');
+  qryConsNotificacao.SQL.Add('Order By n.cod_notificacao Desc');
+
+  if pagina > 0 then
+  begin
+     qryConsNotificacao.SQL.Add('Limit :pagina, :qtd_reg');
+     qryConsNotificacao.ParamByName('pagina').Value  := (pagina - 1) * QTD_REG_PAGINA;
+     qryConsNotificacao.ParamByName('qtd_reg').Value := QTD_REG_PAGINA;
+  end;
+
+  qryConsNotificacao.Active := True;
+end;
+
+end.

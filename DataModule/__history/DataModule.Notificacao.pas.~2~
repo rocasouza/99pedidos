@@ -1,0 +1,25 @@
+unit DataModule.Notificacao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDmNotificacao = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DmNotificacao: TDmNotificacao;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

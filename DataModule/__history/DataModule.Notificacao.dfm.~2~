@@ -1,0 +1,4 @@
+object DmNotificacao: TDmNotificacao
+  Height = 480
+  Width = 307
+end

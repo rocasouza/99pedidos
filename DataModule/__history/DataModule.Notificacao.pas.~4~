@@ -1,4 +1,4 @@
-unit DataModule.Cliente;
+unit DataModule.Notificacao;
 
 interface
 
@@ -9,20 +9,17 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TDmCliente = class(TDataModule)
-    qryConsCliente: TFDQuery;
+  TDmNotificacao = class(TDataModule)
+    qryConsNotificacao: TFDQuery;
   private
     { Private declarations }
   public
-    procedure ListarClientes(pagina: integer; busca: string);
+    procedure ListarNotificacoes(pagina: integer);
     { Public declarations }
   end;
 
 var
-  DmCliente: TDmCliente;
-
-Const
-  QTD_REG_PAGINA = 15;
+  DmNotificacao: TDmNotificacao;
 
 implementation
 
@@ -33,7 +30,7 @@ uses DataModule.Global;
 {$R *.dfm}
 
 // Lista e busca clientes no banco de dados.
-procedure TDmCliente.ListarClientes(pagina: integer; busca: string);
+procedure TDmNotificacao.ListarNotificacoes(pagina: integer);
 begin
   qryConsCliente.Active := False;
   qryConsCliente.SQL.Clear;

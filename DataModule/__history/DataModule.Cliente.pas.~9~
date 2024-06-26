@@ -32,7 +32,7 @@ uses DataModule.Global;
 
 {$R *.dfm}
 
-// Lista e busca clientes no banco de dados.
+// Lista e busca pedidos no banco de dados.
 procedure TDmCliente.ListarClientes(pagina: integer; busca: string);
 begin
   qryConsCliente.Active := False;

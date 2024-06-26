@@ -87,6 +87,7 @@ type
     imgIconeSincronizar: TImage;
     imgIconeEndereco: TImage;
     imgIconeFone: TImage;
+    imgIconeMenu: TImage;
     procedure imgAbaDashboardClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BTBuscaPedidoClick(Sender: TObject);
@@ -94,6 +95,8 @@ type
       const ARect: TRectF);
     procedure BTBuscaClienteClick(Sender: TObject);
     procedure lvClientePaint(Sender: TObject; Canvas: TCanvas;
+      const ARect: TRectF);
+    procedure lvNotificacaoPaint(Sender: TObject; Canvas: TCanvas;
       const ARect: TRectF);
   private
     procedure AbrirAba(img: TImage);
@@ -106,6 +109,9 @@ type
     procedure ListarClientes(pagina: integer; busca: string;
       ind_clear: boolean);
     procedure ThreadClientesTerminate(Sender: TObject);
+    procedure AddNotificacaoListView(cod_notificacao, dt, titulo, texto, ind_lido: string);
+    procedure ListarNotificacao(pagina: integer; ind_clear: boolean);
+    procedure ThreadNotificacoesTerminate(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -117,11 +123,12 @@ var
 Const
   QTD_REG_PAGINA_PEDIDO  = 15;
   QTD_REG_PAGINA_CLIENTE = 15;
+  QTD_REG_PAGINA_NOTIFICACAO = 15;
 
 implementation
 
 uses
-  DataModule.Pedido, DataModule.Cliente;
+  DataModule.Pedido, DataModule.Cliente, DataModule.Notificacao;
 
 {$R *.fmx}
 
@@ -148,6 +155,8 @@ begin
 
   if img.Name = 'imgAbaCliente' then
      ListarClientes(1, '', True);
+  if img.Name = 'imgAbaNotificacao' then
+     ListarNotificacao(1, True);
 end;
 
 procedure TFrmPrincipal.imgAbaDashboardClick(Sender: TObject);
@@ -460,6 +469,132 @@ begin
   if (lvCliente.Items.Count >= QTD_REG_PAGINA_PEDIDO) and (lvCliente.Tag >= 0) then
      if lvCliente.GetItemRect(lvCliente.Items.Count - 5).Bottom <= lvCliente.Height then
         ListarClientes(lvCliente.Tag + 1, EditBuscaCliente.Text, False);
+end;
+
+{$ENDREGION}
+
+{$REGION 'Aba Notificação'}
+// Adiciona Notificação na lvNotificacao.
+procedure TFrmPrincipal.AddNotificacaoListView(cod_notificacao, dt, titulo, texto, ind_lido: string);
+var
+ item : TListViewItem;
+ txt  : TListItemText;
+ img  : TListItemImage;
+begin
+  try
+    item := lvNotificacao.Items.Add;
+
+    with item do
+    begin
+      TagString := cod_notificacao;
+
+      // Título.
+      txt := TListItemText(Objects.FindDrawable('txtTitulo'));
+      txt.Text := titulo;
+
+      // Data.
+      txt := TListItemText(Objects.FindDrawable('txtData'));
+      txt.Text := dt;
+
+      // Ícone Data.
+      img := TListItemImage(Objects.FindDrawable('imgData'));
+      img.Bitmap := imgIconeData.Bitmap;
+
+      // Mensagem.
+      txt := TListItemText(Objects.FindDrawable('txtMensagem'));
+      txt.Text := texto;
+
+      // Ícone Menu.
+      img := TListItemImage(Objects.FindDrawable('imgMenu'));
+      img.Bitmap := imgIconeMenu.Bitmap;
+    end;
+  except on ex:Exception do
+    ShowMessage('Erro ao inserir pedido na lista: ' + ex.Message)
+  end;
+end;
+
+// Terminate da Thread das Notificações.
+procedure TFrmPrincipal.ThreadNotificacoesTerminate(Sender: TObject);
+begin
+  // Não carregar mais dados.
+  if DmNotificacao.qryConsNotificacao.RecordCount < QTD_REG_PAGINA_NOTIFICACAO then
+     lvNotificacao.Tag := -1;
+
+  with DmNotificacao.qryConsNotificacao do
+  begin
+    while not Eof do
+    begin
+      AddNotificacaoListView(FieldByName('cod_notificacao').AsString,
+                             FormatDateTime('dd/mm/yy hh:nn', FieldByName('data_notificacao').AsDateTime),
+                             FieldByName('titulo').AsString, FieldByName('texto').AsString,
+                             FieldByName('ind_lido').AsString);
+      Next;
+    end;
+  end;
+
+  // Finaliza update da ListView.
+  lvNotificacao.EndUpdate;
+
+  // Marcar que o processo terminou.
+  lvNotificacao.TagString := '';
+
+  // Exibe mensagem caso haja algum erro na thread.
+  if Sender is TThread then
+  begin
+    if Assigned(TThread(Sender).FatalException) then
+    begin
+      ShowMessage(Exception(TThread(Sender).FatalException).Message);
+      Exit;
+    end;
+  end;
+end;
+
+// Requisição para os dados dos clientes.
+procedure TFrmPrincipal.ListarNotificacao(pagina: integer; ind_clear: boolean);
+var
+ t : TThread;
+begin
+  // Evitar processamento concorrente.
+  if lvNotificacao.TagString = 'S' then
+     Exit;
+
+  // Em processamento.
+  lvNotificacao.TagString := 'S';
+
+  // Começa update da ListView.
+  lvNotificacao.BeginUpdate;
+
+  // Limpa a ListView...
+  if ind_clear then
+  begin
+    pagina := 1;
+    lvNotificacao.ScrollTo(0);
+    lvNotificacao.Items.Clear;
+  end;
+
+  { Tag: contém a página atual solicitada ao servidor.
+    >= 1 : faz o request para buscar mais dados
+    -1   : indica que não tem mais dados
+  }
+  // Salva a página atual a ser exibida.
+  lvNotificacao.Tag := pagina;
+
+  // Requisição por mais dados.
+  t := TThread.CreateAnonymousThread(procedure
+  begin
+    DmNotificacao.ListarNotificacoes(pagina);
+  end);
+  t.OnTerminate := ThreadNotificacoesTerminate;
+  t.Start;
+end;
+
+procedure TFrmPrincipal.lvNotificacaoPaint(Sender: TObject; Canvas: TCanvas;
+  const ARect: TRectF);
+begin
+  // Verifica se a rolagem atingiu o limite para uma nova carga.
+  if (lvNotificacao.Items.Count >= QTD_REG_PAGINA_NOTIFICACAO) and (lvNotificacao.Tag >= 0) then
+     if lvNotificacao.GetItemRect(lvNotificacao.Items.Count - 5).Bottom <= lvNotificacao.Height then
+        ListarNotificacao(lvNotificacao.Tag + 1, False);
 end;
 
 {$ENDREGION}
