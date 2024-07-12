@@ -221,6 +221,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Units\uFunctions.pas"/>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>
         <None Include="ModelSupport_Pedidos\default.txvpck"/>
         <None Include="ModelSupport_Pedidos\UnitPrincipal\default.txvpck"/>

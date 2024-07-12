@@ -9,8 +9,7 @@ uses
   DataModule.Global in 'DataModule\DataModule.Global.pas' {DmGlobal: TDataModule},
   DataModule.Pedido in 'DataModule\DataModule.Pedido.pas' {DmPedido: TDataModule},
   DataModule.Cliente in 'DataModule\DataModule.Cliente.pas' {DmCliente: TDataModule},
-  DataModule.Notificacao in 'DataModule\DataModule.Notificacao.pas' {DmNotificacao: TDataModule},
-  uFunctions in 'Units\uFunctions.pas';
+  DataModule.Notificacao in 'DataModule\DataModule.Notificacao.pas' {DmNotificacao: TDataModule};
 
 {$R *.res}
 

@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.TabControl, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Edit,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, FMX.ListBox;
+  FMX.ListView, FMX.ListBox, uFunctions;
 
 type
   TFrmPrincipal = class(TForm)
@@ -98,6 +98,10 @@ type
       const ARect: TRectF);
     procedure lvNotificacaoPaint(Sender: TObject; Canvas: TCanvas;
       const ARect: TRectF);
+    procedure lvNotificacaoUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure lvClienteUpdateObjects(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     procedure AbrirAba(img: TImage);
     procedure AddPedidoListView(pedido_local, pedido_oficial, cliente,
@@ -112,6 +116,8 @@ type
     procedure AddNotificacaoListView(cod_notificacao, dt, titulo, texto, ind_lido: string);
     procedure ListarNotificacao(pagina: integer; ind_clear: boolean);
     procedure ThreadNotificacoesTerminate(Sender: TObject);
+    procedure LayoutListViewNotificacao(AItem: TListViewItem);
+    procedure LayoutListViewCliente(AItem: TListViewItem);
     { Private declarations }
   public
     { Public declarations }
@@ -371,6 +377,7 @@ begin
         img.Bitmap := imgIconeSincronizar.Bitmap;
       end;
     end;
+    LayoutListViewCliente(item);
   except on ex:Exception do
     ShowMessage('Erro ao inserir pedido na lista: ' + ex.Message)
   end;
@@ -457,6 +464,17 @@ begin
   t.Start;
 end;
 
+procedure TFrmPrincipal.LayoutListViewCliente(AItem: TListViewItem);
+var
+ txt  : TListItemText;
+begin
+  txt := TListItemText(AItem.Objects.FindDrawable('txtEndereco'));
+  txt.Width  := lvCliente.Width - 110 ;
+  txt.Height := GetTextHeight(txt, txt.Width, txt.Text) + 5;
+
+  AItem.Height := Trunc(txt.PlaceOffset.Y + txt.Height);
+end;
+
 procedure TFrmPrincipal.BTBuscaClienteClick(Sender: TObject);
 begin
   ListarClientes(1, EditBuscaCliente.Text, True);
@@ -469,6 +487,12 @@ begin
   if (lvCliente.Items.Count >= QTD_REG_PAGINA_PEDIDO) and (lvCliente.Tag >= 0) then
      if lvCliente.GetItemRect(lvCliente.Items.Count - 5).Bottom <= lvCliente.Height then
         ListarClientes(lvCliente.Tag + 1, EditBuscaCliente.Text, False);
+end;
+
+procedure TFrmPrincipal.lvClienteUpdateObjects(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+  LayoutListViewCliente(AItem);
 end;
 
 {$ENDREGION}
@@ -491,6 +515,7 @@ begin
       // Título.
       txt := TListItemText(Objects.FindDrawable('txtTitulo'));
       txt.Text := titulo;
+      txt.TagString := ind_lido;
 
       // Data.
       txt := TListItemText(Objects.FindDrawable('txtData'));
@@ -508,6 +533,8 @@ begin
       img := TListItemImage(Objects.FindDrawable('imgMenu'));
       img.Bitmap := imgIconeMenu.Bitmap;
     end;
+
+    LayoutListViewNotificacao(item);
   except on ex:Exception do
     ShowMessage('Erro ao inserir pedido na lista: ' + ex.Message)
   end;
@@ -549,7 +576,7 @@ begin
   end;
 end;
 
-// Requisição para os dados dos clientes.
+// Requisição para os dados das notificações.
 procedure TFrmPrincipal.ListarNotificacao(pagina: integer; ind_clear: boolean);
 var
  t : TThread;
@@ -588,6 +615,22 @@ begin
   t.Start;
 end;
 
+procedure TFrmPrincipal.LayoutListViewNotificacao(AItem: TListViewItem);
+var
+ txt  : TListItemText;
+begin
+  txt := TListItemText(AItem.Objects.FindDrawable('txtTitulo'));
+
+  if txt.TagString = 'N' then // ind_lido
+     txt.Font.Style := [TFontStyle.fsBold];
+
+  txt := TListItemText(AItem.Objects.FindDrawable('txtMensagem'));
+  txt.Width  := lvNotificacao.Width - 24;
+  txt.Height := GetTextHeight(txt, txt.Width, txt.Text) + 5;
+
+  AItem.Height := Trunc(txt.PlaceOffset.Y + txt.Height);
+end;
+
 procedure TFrmPrincipal.lvNotificacaoPaint(Sender: TObject; Canvas: TCanvas;
   const ARect: TRectF);
 begin
@@ -595,6 +638,12 @@ begin
   if (lvNotificacao.Items.Count >= QTD_REG_PAGINA_NOTIFICACAO) and (lvNotificacao.Tag >= 0) then
      if lvNotificacao.GetItemRect(lvNotificacao.Items.Count - 5).Bottom <= lvNotificacao.Height then
         ListarNotificacao(lvNotificacao.Tag + 1, False);
+end;
+
+procedure TFrmPrincipal.lvNotificacaoUpdateObjects(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+  LayoutListViewNotificacao(AItem);
 end;
 
 {$ENDREGION}
