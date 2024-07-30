@@ -10,7 +10,8 @@ uses
   DataModule.Pedido in 'DataModule\DataModule.Pedido.pas' {DmPedido: TDataModule},
   DataModule.Cliente in 'DataModule\DataModule.Cliente.pas' {DmCliente: TDataModule},
   DataModule.Notificacao in 'DataModule\DataModule.Notificacao.pas' {DmNotificacao: TDataModule},
-  uFunctions in 'Units\uFunctions.pas';
+  uFunctions in 'Units\uFunctions.pas',
+  UnitProduto in 'pages\UnitProduto.pas' {FrmProduto};
 
 {$R *.res}
 
@@ -21,5 +22,6 @@ begin
   Application.CreateForm(TDmPedido, DmPedido);
   Application.CreateForm(TDmCliente, DmCliente);
   Application.CreateForm(TDmNotificacao, DmNotificacao);
+  Application.CreateForm(TFrmProduto, FrmProduto);
   Application.Run;
 end.

@@ -222,6 +222,10 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Units\uFunctions.pas"/>
+        <DCCReference Include="pages\UnitProduto.pas">
+            <Form>FrmProduto</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>
         <None Include="ModelSupport_Pedidos\default.txvpck"/>
         <None Include="ModelSupport_Pedidos\UnitPrincipal\default.txvpck"/>
