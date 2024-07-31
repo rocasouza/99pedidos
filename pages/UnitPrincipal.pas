@@ -102,6 +102,7 @@ type
       const AItem: TListViewItem);
     procedure lvClienteUpdateObjects(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure lbiProdutosClick(Sender: TObject);
   private
     procedure AbrirAba(img: TImage);
     procedure AddPedidoListView(pedido_local, pedido_oficial, cliente,
@@ -134,7 +135,7 @@ Const
 implementation
 
 uses
-  DataModule.Pedido, DataModule.Cliente, DataModule.Notificacao;
+  DataModule.Pedido, DataModule.Cliente, DataModule.Notificacao, UnitProduto;
 
 {$R *.fmx}
 
@@ -629,6 +630,13 @@ begin
   txt.Height := GetTextHeight(txt, txt.Width, txt.Text) + 5;
 
   AItem.Height := Trunc(txt.PlaceOffset.Y + txt.Height);
+end;
+
+procedure TFrmPrincipal.lbiProdutosClick(Sender: TObject);
+begin
+  if not Assigned(FrmProduto) then
+     Application.CreateForm(TFrmProduto, FrmProduto);
+  FrmProduto.Show
 end;
 
 procedure TFrmPrincipal.lvNotificacaoPaint(Sender: TObject; Canvas: TCanvas;

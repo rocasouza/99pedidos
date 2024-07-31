@@ -20,9 +20,15 @@ type
     BTVoltar: TSpeedButton;
     Image1: TImage;
     lvProduto: TListView;
-    imgIconeProduto: TImage;
+    imgIconeEstoque: TImage;
     imgIconeValor: TImage;
+    imgIconeCamera: TImage;
+    procedure FormShow(Sender: TObject);
   private
+    procedure AddProdutoListView(cod_produto_local, descricao: string; valor,
+      estoque: double; foto: TStream);
+    procedure ListarProdutos(pagina: integer; busca: string;
+      ind_clear: boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -37,4 +43,76 @@ implementation
 
 uses UnitPrincipal;
 
+// Adiciona Pedidos na lvPedido.
+procedure TFrmProduto.AddProdutoListView(cod_produto_local, descricao: string; valor, estoque: double; foto: TStream);
+var
+ item : TListViewItem;
+ txt  : TListItemText;
+ img  : TListItemImage;
+ bmp  : TBitmap;
+begin
+  try
+    item := lvProduto.Items.Add;
+
+    with item do
+    begin
+      Height    := 85;
+      TagString := cod_produto_local;
+
+      // Descrição...
+      txt := TListItemText(Objects.FindDrawable('txtDescricao'));
+      txt.Text := descricao;
+
+      // Valor...
+      txt := TListItemText(Objects.FindDrawable('txtValor'));
+      txt.Text := FormatFloat('R$#,##0.00', valor);
+
+      // Estoque...
+      txt := TListItemText(Objects.FindDrawable('txtEstoque'));
+      txt.Text := FormatFloat('#,##0.00', estoque);
+
+      // Ícone Valor...
+      img := TListItemImage(Objects.FindDrawable('imgIconeValor'));
+      img.Bitmap := imgIconeValor.Bitmap;
+
+      // Ícone Estoque...
+      img := TListItemImage(Objects.FindDrawable('imgIconeEstoque'));
+      img.Bitmap := imgIconeEstoque.Bitmap;
+
+      // Foto...
+      img := TListItemImage(Objects.FindDrawable('imgFoto'));
+      if foto <> Nil then
+      begin
+        bmp := TBitmap.Create;
+        bmp.LoadFromStream(foto);
+
+        img.OwnsBitmap := True;
+        img.Bitmap     := bmp;
+      end
+      else
+        img.Bitmap := imgIconeCamera.Bitmap;
+    end;
+  except on ex:Exception do
+    ShowMessage('Erro ao inserir produto na lista: ' + ex.Message)
+  end;
+end;
+
+// Lista Pedidos na lvPedido.
+procedure TFrmProduto.FormShow(Sender: TObject);
+begin
+  ListarProdutos(1,'', True);
+end;
+
+procedure TFrmProduto.ListarProdutos(pagina: integer; busca: string; ind_clear: boolean);
+begin
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+end;
 end.

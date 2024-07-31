@@ -1,5 +1,10 @@
 __history
 __recovery
+__history/
+__recovery/
+ModelSupport_Pedidos
+ModelSupport_Pedidos/
+/ModelSupport_Pedidos
 /DataModule/__history
 /DataModule/__recovery
 /pages/__history
