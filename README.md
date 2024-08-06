@@ -6,4 +6,5 @@ Conforme o andamento do projeto, este repositório será atualizado. 😉
 
 Atualizações:
 
-- Feature: UnitProduto (Layout: aula 26 11 min)
+- Feature: DMProduto(Aula 27)
+- Update: UnitProduto - Listagem de produtos a partir do banco de dados.

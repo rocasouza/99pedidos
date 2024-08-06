@@ -226,6 +226,11 @@
             <Form>FrmProduto</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="DataModule\DataModule.Produto.pas">
+            <Form>DMProduto</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>
         <None Include="ModelSupport_Pedidos\default.txvpck"/>
         <None Include="ModelSupport_Pedidos\UnitPrincipal\default.txvpck"/>

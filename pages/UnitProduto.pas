@@ -41,7 +41,7 @@ implementation
 
 {$R *.fmx}
 
-uses UnitPrincipal;
+uses UnitPrincipal, DataModule.Produto;
 
 // Adiciona Pedidos na lvPedido.
 procedure TFrmProduto.AddProdutoListView(cod_produto_local, descricao: string; valor, estoque: double; foto: TStream);
@@ -105,14 +105,22 @@ end;
 
 procedure TFrmProduto.ListarProdutos(pagina: integer; busca: string; ind_clear: boolean);
 begin
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
-  AddProdutoListView('00001', 'monitor Dell 22"', 499.90, 10, nil);
+  if ind_clear then
+     lvProduto.Items.Clear;
+
+  DMProduto.ListarProdutos(pagina, busca);
+
+  with DMProduto.qryConsProduto do
+  begin
+    while not Eof do
+    begin
+      AddProdutoListView(FieldByName('cod_produto_local').AsString,
+                         FieldByName('descricao').AsString,
+                         FieldByName('valor').AsFloat,
+                         FieldByName('qtd_estoque').AsFloat,
+                         nil);
+      Next;
+    end;
+  end;
 end;
 end.

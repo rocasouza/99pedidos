@@ -11,7 +11,8 @@ uses
   DataModule.Cliente in 'DataModule\DataModule.Cliente.pas' {DmCliente: TDataModule},
   DataModule.Notificacao in 'DataModule\DataModule.Notificacao.pas' {DmNotificacao: TDataModule},
   uFunctions in 'Units\uFunctions.pas',
-  UnitProduto in 'pages\UnitProduto.pas' {FrmProduto};
+  UnitProduto in 'pages\UnitProduto.pas' {FrmProduto},
+  DataModule.Produto in 'DataModule\DataModule.Produto.pas' {DMProduto: TDataModule};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.CreateForm(TDmCliente, DmCliente);
   Application.CreateForm(TDmNotificacao, DmNotificacao);
   Application.CreateForm(TFrmProduto, FrmProduto);
+  Application.CreateForm(TDMProduto, DMProduto);
   Application.Run;
 end.
