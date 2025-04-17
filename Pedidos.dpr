@@ -12,7 +12,8 @@ uses
   DataModule.Notificacao in 'DataModule\DataModule.Notificacao.pas' {DmNotificacao: TDataModule},
   uFunctions in 'Units\uFunctions.pas',
   UnitProduto in 'pages\UnitProduto.pas' {FrmProduto},
-  DataModule.Produto in 'DataModule\DataModule.Produto.pas' {DMProduto: TDataModule};
+  DataModule.Produto in 'DataModule\DataModule.Produto.pas' {DMProduto: TDataModule},
+  UnitProdutoCad in 'pages\UnitProdutoCad.pas' {FrmProdutoCad};
 
 {$R *.res}
 
@@ -25,5 +26,6 @@ begin
   Application.CreateForm(TDmNotificacao, DmNotificacao);
   Application.CreateForm(TFrmProduto, FrmProduto);
   Application.CreateForm(TDMProduto, DMProduto);
+  Application.CreateForm(TFrmProdutoCad, FrmProdutoCad);
   Application.Run;
 end.

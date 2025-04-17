@@ -12,7 +12,7 @@ uses
 type
   TFrmProduto = class(TForm)
     recToolbar: TRectangle;
-    Label2: TLabel;
+    lblTitulo: TLabel;
     BTAddProduto: TSpeedButton;
     Image4: TImage;
     rectBusca: TRectangle;

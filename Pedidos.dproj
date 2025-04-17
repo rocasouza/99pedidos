@@ -231,6 +231,10 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="pages\UnitProdutoCad.pas">
+            <Form>FrmProdutoCad</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Pedidos\default.txaPackage"/>
         <None Include="ModelSupport_Pedidos\default.txvpck"/>
         <None Include="ModelSupport_Pedidos\UnitPrincipal\default.txvpck"/>
