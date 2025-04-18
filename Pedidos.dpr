@@ -13,7 +13,9 @@ uses
   uFunctions in 'Units\uFunctions.pas',
   UnitProduto in 'pages\UnitProduto.pas' {FrmProduto},
   DataModule.Produto in 'DataModule\DataModule.Produto.pas' {DMProduto: TDataModule},
-  UnitProdutoCad in 'pages\UnitProdutoCad.pas' {FrmProdutoCad};
+  UnitProdutoCad in 'pages\UnitProdutoCad.pas' {FrmProdutoCad},
+  uActionSheet in 'Units\uActionSheet.pas',
+  u99Permissions in 'Units\u99Permissions.pas';
 
 {$R *.res}
 

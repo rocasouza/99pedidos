@@ -30,6 +30,9 @@ type
       const ARect: TRectF);
     procedure lvProdutoUpdateObjects(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure BTVoltarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BTAddProdutoClick(Sender: TObject);
   private
     procedure AddProdutoListView(cod_produto_local, descricao: string; valor,
       estoque: double; foto: TStream);
@@ -52,7 +55,7 @@ implementation
 
 {$R *.fmx}
 
-uses UnitPrincipal, DataModule.Produto;
+uses UnitPrincipal, DataModule.Produto, UnitProdutoCad;
 
 procedure TFrmProduto.AddProdutoListView(cod_produto_local, descricao: string; valor, estoque: double; foto: TStream);
 var
@@ -108,9 +111,27 @@ begin
   end;
 end;
 
+procedure TFrmProduto.BTAddProdutoClick(Sender: TObject);
+begin
+   if not Assigned(FrmProdutoCad) then
+      Application.CreateForm(TFrmProdutoCad, FrmProdutoCad);
+   FrmProdutoCad.Show;
+end;
+
 procedure TFrmProduto.BTBuscaProdutoClick(Sender: TObject);
 begin
   ListarProdutos(1, EditBuscaProduto.Text, True);
+end;
+
+procedure TFrmProduto.BTVoltarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFrmProduto.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action     := TCloseAction.caFree;
+  FrmProduto := nil;
 end;
 
 procedure TFrmProduto.FormShow(Sender: TObject);

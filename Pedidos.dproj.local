@@ -31,11 +31,11 @@
     <Transaction>2024/06/22 10:56:11.000.078,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Pedido.dfm=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.dfm</Transaction>
     <Transaction>2024/06/22 10:56:11.000.078,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Pedido.pas=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/06/22 22:04:55.000.220,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
-    <Transaction>2024/06/22 22:05:20.000.979,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.dfm=F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Cliente.dfm</Transaction>
     <Transaction>2024/06/22 22:05:20.000.979,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas=F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Cliente.pas</Transaction>
+    <Transaction>2024/06/22 22:05:20.000.979,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.dfm=F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Cliente.dfm</Transaction>
     <Transaction>2024/06/26 00:01:04.000.164,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
-    <Transaction>2024/06/26 00:01:36.000.994,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Notificacao.pas=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/06/26 00:01:36.000.994,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Notificacao.dfm=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.dfm</Transaction>
+    <Transaction>2024/06/26 00:01:36.000.994,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Notificacao.pas=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/07/11 20:23:34.000.284,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/07/11 20:23:58.000.760,F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas=F:\delphi\99 Coders\Mobile\99pedidos\Units\uFunctions.pas</Transaction>
     <Transaction>2024/07/30 00:06:37.000.127,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
@@ -45,11 +45,13 @@
     <Transaction>2024/08/05 23:04:40.000.476,=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
     <Transaction>2024/08/05 23:04:56.000.408,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Produto.dfm=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.dfm</Transaction>
     <Transaction>2024/08/05 23:04:56.000.408,F:\delphi\99 Coders\Mobile\99pedidos\DataModule\DataModule.Produto.pas=F:\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
-    <Transaction>2025/04/17 00:02:50.978,=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
-    <Transaction>2025/04/17 00:04:27.616,F:\Projetos\delphi\99 Coders\Mobile\99pedidos\pages\UnitProdutoCad.pas=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
-    <Transaction>2025/04/17 00:04:27.616,F:\Projetos\delphi\99 Coders\Mobile\99pedidos\pages\UnitProdutoCad.fmx=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.fmx</Transaction>
+    <Transaction>2025/04/17 00:02:50.000.978,=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
+    <Transaction>2025/04/17 00:04:27.000.616,F:\Projetos\delphi\99 Coders\Mobile\99pedidos\pages\UnitProdutoCad.fmx=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.fmx</Transaction>
+    <Transaction>2025/04/17 00:04:27.000.616,F:\Projetos\delphi\99 Coders\Mobile\99pedidos\pages\UnitProdutoCad.pas=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Unit1.pas</Transaction>
+    <Transaction>2025/04/17 23:01:50.000.655,=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Units\uActionSheet.pas</Transaction>
+    <Transaction>2025/04/17 23:59:20.000.504,=F:\Projetos\delphi\99 Coders\Mobile\99pedidos\Units\u99Permissions.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android64=""/>
+		<NoProfile Android64="RQCW4066CQD" Android="RQCW4066CQD"/>
 	</ActiveMobileDevice>
 </BorlandProject>

@@ -61,7 +61,6 @@ uses
   UnitLogin;
 
 {$R *.fmx}
-{$R *.NmXhdpiPh.fmx ANDROID}
 
 procedure TFrmInicial.AbrirAba(index : integer);
 begin
@@ -97,3 +96,4 @@ begin
 end;
 
 end.
+
