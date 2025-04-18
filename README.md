@@ -7,4 +7,4 @@ Conforme o andamento do projeto, este repositório será atualizado. 😉
 Atualizações:
 
 - Feature: --
-- Update: UnitProduto - 30 - Listagem dos Produtos (responsividade)
+- Update: UnitProdutoCad - 33 - Cadastro de Produtos (permissão a camera)
