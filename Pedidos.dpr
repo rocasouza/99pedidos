@@ -15,7 +15,8 @@ uses
   DataModule.Produto in 'DataModule\DataModule.Produto.pas' {DMProduto: TDataModule},
   UnitProdutoCad in 'pages\UnitProdutoCad.pas' {FrmProdutoCad},
   uActionSheet in 'Units\uActionSheet.pas',
-  u99Permissions in 'Units\u99Permissions.pas';
+  u99Permissions in 'Units\u99Permissions.pas',
+  UnitEdicao in 'pages\UnitEdicao.pas' {FrmEdicao};
 
 {$R *.res}
 
@@ -29,5 +30,6 @@ begin
   Application.CreateForm(TFrmProduto, FrmProduto);
   Application.CreateForm(TDMProduto, DMProduto);
   Application.CreateForm(TFrmProdutoCad, FrmProdutoCad);
+  Application.CreateForm(TFrmEdicao, FrmEdicao);
   Application.Run;
 end.

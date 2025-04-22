@@ -224,7 +224,7 @@ end;
 procedure TFrmProduto.LayoutListViewProduto(AItem: TListViewItem);
 var
  txt : TListItemText;
- img : TListItemImage;
+// img : TListItemImage;
  posicao_y: Extended;
 begin
   txt := TListItemText(AItem.Objects.FindDrawable('txtDescricao'));

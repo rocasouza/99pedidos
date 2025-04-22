@@ -42,6 +42,7 @@ type
     procedure ImageFotoClick(Sender: TObject);
     procedure ActGaleriaFotosDidFinishTaking(Image: TBitmap);
     procedure ActCameraDidFinishTaking(Image: TBitmap);
+    procedure recDescricaoClick(Sender: TObject);
   private
     Menu : TActionSheet;
     Permissao : T99Permissions;
@@ -60,7 +61,7 @@ implementation
 
 {$R *.fmx}
 
-uses UnitPrincipal;
+uses UnitPrincipal, UnitEdicao;
 
 procedure TFrmProdutoCad.ActCameraDidFinishTaking(Image: TBitmap);
 begin
@@ -93,6 +94,19 @@ begin
   Menu.HideMenu;
 
   Permissao.PhotoLibrary(ActGaleriaFotos, ErroPermissaoFotos);
+end;
+
+procedure TFrmProdutoCad.recDescricaoClick(Sender: TObject);
+begin
+  FrmEdicao.Editar(lblDescricao,
+                   TTipoCampo.Edit,
+                   'Descrição do Produto',
+                   'Informe a descrição',
+                   lblDescricao.Text,
+                   True,
+                   200
+                   // ExecuteOnClose
+                   );
 end;
 
 procedure TFrmProdutoCad.OpenCamera(Sender: TObject);
