@@ -7,4 +7,4 @@ Conforme o andamento do projeto, este repositório será atualizado. 😉
 Atualizações:
 
 - Feature: --
-- Update: UnitProdutoCad - 33 - Cadastro de Produtos (permissão a camera)
+- Update: UnitPrincipal, UnitEdicao - 35 - Tela de edição padrão (parte 2)

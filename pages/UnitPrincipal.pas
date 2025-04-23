@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.TabControl, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Edit,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, FMX.ListBox, uFunctions;
+  FMX.ListView, FMX.ListBox, uFunctions, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
 type
   TFrmPrincipal = class(TForm)
